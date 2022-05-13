@@ -5,6 +5,7 @@ using Silk.NET.Windowing;
 namespace Tutorial {
 	class Program {
 		private static IWindow window;
+		private static System.Timers.Timer timer;
 
 		private static void Main(string[] args) {
 			//Create a window.
@@ -19,6 +20,14 @@ namespace Tutorial {
 			window.Load += OnLoad;
 			window.Update += OnUpdate;
 			window.Render += OnRender;
+
+			timer = new System.Timers.Timer(10.0d * 1000.0d) {
+				AutoReset = false,
+				Enabled = true
+			};
+			timer.Elapsed += (object? sender, System.Timers.ElapsedEventArgs e) => {
+				window.Close();
+			};
 
 			//Run the window.
 			window.Run();
