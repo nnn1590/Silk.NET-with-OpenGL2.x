@@ -9,6 +9,8 @@ namespace Tutorial {
 		private static System.Timers.Timer timer;
 
 		private static void Main(string[] args) {
+			Console.WriteLine("Program started");
+
 			//Create a window.
 			WindowOptions options = WindowOptions.Default;
 			options.Size = new Vector2D<int>(800, 600);
@@ -16,6 +18,7 @@ namespace Tutorial {
 			options.API = new GraphicsAPI(ContextAPI.OpenGL, ContextProfile.Compatability, ContextFlags.Default, new APIVersion(2, 1));
 
 			window = Window.Create(options);
+			Console.WriteLine($"{nameof(window)} created");
 
 			//Assign events.
 			window.Load += OnLoad;
@@ -26,10 +29,11 @@ namespace Tutorial {
 				AutoReset = false,
 				Enabled = true
 			};
-			timer.Elapsed += (object? sender, System.Timers.ElapsedEventArgs e) => {
+			timer.Elapsed += (object sender, System.Timers.ElapsedEventArgs e) => {
 				window.Close();
 			};
 
+			Console.WriteLine($"Running {nameof(window)}...");
 			//Run the window.
 			window.Run();
 		}
