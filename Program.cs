@@ -8,7 +8,7 @@ namespace Tutorial {
 
 		private static void Main(string[] args) {
 			//Create a window.
-			var options = WindowOptions.Default;
+			WindowOptions options = WindowOptions.Default;
 			options.Size = new Vector2D<int>(800, 600);
 			options.Title = "LearnOpenGL with Silk.NET";
 			options.API = new GraphicsAPI(ContextAPI.OpenGL, ContextProfile.Compatability, ContextFlags.Default, new APIVersion(2, 1));
