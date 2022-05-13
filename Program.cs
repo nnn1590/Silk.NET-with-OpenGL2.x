@@ -40,6 +40,7 @@ namespace Tutorial {
 			for (int i = 0; i < input.Keyboards.Count; i++) {
 				input.Keyboards[i].KeyDown += KeyDown;
 			}
+			Cosnole.WriteLine("OnLoad() called");
 		}
 
 		private static void OnRender(double obj) {
