@@ -16,17 +16,14 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
-      - name: Update APT repository
-        if: matrix.os == 'ubuntu-20.04'
-        run: sudo apt update
       - name: Setup Xvfb
         if: matrix.os == 'ubuntu-20.04'
-        run: |
-          sudo apt install -y xvfb
-          Xvfb &
+        run: Xvfb :0 &
       - name: Restore NuGet packages
         run: dotnet restore
       - name: Build
         run: dotnet build
       - name: Run
         run: dotnet run
+        env:
+          DISPLAY: :0
