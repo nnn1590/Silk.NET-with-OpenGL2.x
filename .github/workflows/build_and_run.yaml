@@ -2,6 +2,10 @@ name: Build and run
 
 on: push
 
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  DISPLAY: :0
+
 jobs:
   build_and_run:
     strategy:
@@ -25,5 +29,3 @@ jobs:
         run: dotnet build
       - name: Run
         run: dotnet run
-        env:
-          DISPLAY: :0
